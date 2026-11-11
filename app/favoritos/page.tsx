@@ -12,7 +12,6 @@ interface Parque {
   descripcion: string;
 }
 
-// Datos de referencia para simular favoritos si el usuario aún no ha guardado manual
 const TODOS_LOS_PARQUES: Record<string, Parque> = {
   yellowstone: {
     id: "yellowstone",
@@ -38,6 +37,30 @@ const TODOS_LOS_PARQUES: Record<string, Parque> = {
     imagen: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop",
     descripcion: "Lagos turquesa interconectados por cascadas en un bosque frondoso.",
   },
+  banff: {
+    id: "banff",
+    nombre: "Parque Nacional Banff",
+    pais: "Canadá",
+    categoria: "Montaña",
+    imagen: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop",
+    descripcion: "Lagos de color azul turquesa rodeados por las Montañas Rocosas de Canadá.",
+  },
+  serengeti: {
+    id: "serengeti",
+    nombre: "Parque Nacional Serengueti",
+    pais: "Tanzania",
+    categoria: "Sabana",
+    imagen: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800&auto=format&fit=crop",
+    descripcion: "Hogar de la gran migración anual de ñus y cebras.",
+  },
+  fuji: {
+    id: "fuji",
+    nombre: "Parque Nacional Fuji-Hakone-Izu",
+    pais: "Japón",
+    categoria: "Volcánico",
+    imagen: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop",
+    descripcion: "Centrado alrededor del icónico Monte Fuji, con aguas termales y lagos.",
+  },
 };
 
 export default function FavoritosPage() {
@@ -45,16 +68,14 @@ export default function FavoritosPage() {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    // Simulamos la carga desde localStorage o definimos unos por defecto para demostración
     const guardados = localStorage.getItem("ecotracker_favoritos");
     if (guardados) {
       try {
         setFavoritosIds(JSON.parse(guardados));
       } catch {
-        setFavoritosIds(["yellowstone", "patagonia"]);
+        setFavoritosIds([]);
       }
     } else {
-      // Por defecto para la entrega colocamos dos de ejemplo interactivos
       const iniciales = ["yellowstone", "patagonia"];
       setFavoritosIds(iniciales);
       localStorage.setItem("ecotracker_favoritos", JSON.stringify(iniciales));
