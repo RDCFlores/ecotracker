@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌲 EcoTracker - Explorador de Parques Nacionales
 
-## Getting Started
+EcoTracker es una aplicación web moderna desarrollada como proyecto práctico bajo la metodología **Vibe Coding**, utilizando tecnologías punteras del ecosistema web actual. Su objetivo principal es permitir a los usuarios descubrir reservas naturales y parques nacionales alrededor del mundo, consultar fichas técnicas detalladas y gestionar una lista personal de destinos favoritos.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologías Utilizadas
+
+- **Next.js 16 (App Router)** — Framework de React para renderizado híbrido y optimización de rutas.
+- **TypeScript** — Tipado estático para mayor robustez y escalabilidad del código.
+- **Tailwind CSS** — Framework CSS utility-first para un diseño responsive y elegante.
+- **LocalStorage API** — Persistencia local de datos del lado del cliente para la gestión de favoritos.
+
+---
+
+## 📂 Estructura del Proyecto
+
+El proyecto está configurado directamente en la raíz utilizando la carpeta `app` nativa de Next.js y componentes reutilizables:
+
+```text
+ecotracker/
+├── app/
+│   ├── page.tsx               # Página principal (Home)
+│   ├── layout.tsx             # Layout global con Navbar y Footer
+│   ├── globals.css            # Estilos globales y configuración de Tailwind
+│   ├── parques/
+│   │   ├── page.tsx           # Catálogo general con buscador y filtros
+│   │   ├── loading.tsx        # UI de carga (Skeleton)
+│   │   └── [id]/
+│   │       └── page.tsx       # Detalle dinámico del parque
+│   └── favoritos/
+│       └── page.tsx           # Gestión de favoritos con localStorage
+├── components/
+│   ├── Navbar.tsx             # Barra de navegación responsive
+│   ├── Footer.tsx             # Pie de página dinámico con manejo de fecha
+│   └── BotonFavorito.tsx      # Componente interactivo de favoritos
+├── public/                    # Archivos estáticos e imágenes
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Cómo Ejecutar el Proyecto Localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clonar este repositorio en tu entorno local.
+2. Instala las dependencias necesarias ejecutando:
+   `npm install`
+3. Inicia el servidor de desarrollo:
+   `npm run dev`
+4. Abre tu navegador e ingresa a [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Características Principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Navegación Fluida:** Diseñado con el App Router de Next.js y rutas dinámicas (`/parques/[id]`).
+- **Filtrado Avanzado:** Búsqueda en tiempo real por texto y categorización de ecosistemas en la sección de parques.
+- **Interactividad con Estado Local:** Capacidad de añadir y quitar parques de favoritos de manera persistente utilizando `localStorage`.
+- **Manejo de Errores y Carga:** Pantallas dedicadas de `loading.tsx` y `not-found.tsx` para una experiencia de usuario óptima.
